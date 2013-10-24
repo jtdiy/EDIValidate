@@ -1,0 +1,8 @@
+EDIValidate is a set of Python classes that can be used to validate and parse an EDI file and write it's contents to 
+a well formed XML document.
+
+USAGE: python EDIFile
+
+This will write a formatted file named TSData.xml that is validated/parsed from the EDI file 834.edi using the layout
+file EDITS834.xml.
+

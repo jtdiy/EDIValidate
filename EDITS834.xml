@@ -1,0 +1,635 @@
+<?xml version="1.0"?>
+<edifilespec id="HIPAA834" name="Benefit Enrollment and Maintenance">
+	<table id="Table1" name="Table 1 - Header">
+		<segment id="ST" usage="R" repeat="1" name="Transaction Set Header">
+			<element id="ST01" usage="R" values="834" minLength="3" maxLength="3"/>
+			<element id="ST02" usage="R" minLength="3" maxLength="4"/>
+		</segment>
+		<segment id="BGN" usage="R" repeat="1" name="Beginning Segment">
+			<element id="BGN01" usage="R" values="00,15,22" minLength="2" maxLength="2"/>
+			<element id="BGN02" usage="R" minLength="1" maxLength="30"/>
+			<element id="BGN03" usage="R" minLength="8" maxLength="8"/>
+			<element id="BGN04" usage="R" minLength="4" maxLength="8"/>
+			<element id="BGN05" usage="S" minLength="2" maxLength="2" values="01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,AD,AS,AT,CD,CD,CT,ED,ES,ET,GM,HD,HS,HT,LT,MD,MS,MT,ND,NS,NT,PD,PS,PT,TD,TS,TT,UT"/>
+			<element id="BGN06" usage="S" minLength="1" maxLength="30"/>
+			<element id="BGN07" usage="N"/>
+			<element id="BGN08" usage="R" minLength="1" maxLength="2" values="2,4"/>
+			<element id="BGN09" usage="N"/>
+		</segment>
+		<segment id="REF" usage="S" repeat="1" name="Transaction Set Policy Number">
+			<element id="REF01" usage="R" idvalues="38"/>
+			<element id="REF02" usage="R"/>
+			<element id="REF03" usage="N"/>
+			<element id="REF04" usage="N"/>
+		</segment>
+		<segment id="DTP" usage="S" repeat=">1" name="File Effective Date">
+			<element id="DTP01" usage="R" idvalues="007,303,382,388"/>
+			<element id="DTP02" usage="R" values="D8"/>
+			<element id="DTP03" usage="R"/>
+		</segment>
+		<loop id="L1000A" name="SPONSOR NAME" repeat="1">
+			<segment id="N1" usage="R" repeat="1" name="Sponsor Name">
+				<element id="N101" usage="R" idvalues="P5"/>
+				<element id="N102" usage="S"/>
+				<element id="N103" usage="R" values="FI,ZZ"/>
+				<element id="N104" usage="R"/>
+				<element id="N105" usage="N"/>
+				<element id="N106" usage="N"/>
+			</segment>
+		</loop>
+		<loop id="L1000B" name="PAYER" repeat="1">
+			<segment id="N1" usage="R" repeat="1" name="Payer">
+				<element id="N101" usage="R" idvalues="IN"/>
+				<element id="N102" usage="S"/>
+				<element id="N103" usage="R" values="FI,XV"/>
+				<element id="N104" usage="R"/>
+				<element id="N105" usage="N"/>
+				<element id="N106" usage="N"/>
+			</segment>
+		</loop>
+		<loop id="L1000C" name="TPA/Broker Name" repeat="2">
+			<segment id="N1" usage="S" repeat="1" name="TPA/Broker Name">
+				<element id="N101" usage="R" idvalues="BO,TV"/>
+				<element id="N102" usage="R"/>
+				<element id="N103" usage="R" values="94,FI,XV"/>
+				<element id="N104" usage="R"/>
+				<element id="N105" usage="N"/>
+				<element id="N106" usage="N"/>
+			</segment>
+			<loop id="L1100C" repeat="1" name="TPA/BROKER ACCOUNT INFORMATION">
+				<segment id="ACT" usage="S" repeat="1" name="TPA/Broker Account Information">
+					<element id="ACT01" usage="R"/>
+					<element id="ACT02" usage="N"/>
+					<element id="ACT03" usage="N"/>
+					<element id="ACT04" usage="N"/>
+					<element id="ACT05" usage="N"/>
+					<element id="ACT06" usage="S"/>
+					<element id="ACT07" usage="N"/>
+					<element id="ACT08" usage="N"/>
+					<element id="ACT09" usage="N"/>
+				</segment>
+			</loop>
+		</loop>
+	</table>
+	<table id="Table2" name="Table 2 - Detail">
+		<loop id="L2000" name="MEMBER LEVEL DETAIL" repeat=">1">
+			<segment id="INS" name="Member Level Detail" usage="R" repeat="1">
+				<element id="INS01" usage="R" values="Y,N"/>
+				<element id="INS02" usage="R" values="01,03,04,05,06,07,08,09,10,11,12,13,14,15,17,18,19,23,24,25,26,31,32,33,38,48,49,53"/>
+				<element id="INS03" usage="R" values="001,021,024,025,030"/>
+				<element id="INS04" usage="S" values="01,02,03,04,05,06,07,08,09,10,11,14,15,16,17,18,20,21,22,25,26,27,28,29,31,32,33,37,38,39,40,41,43,AI,XN,XT"/>
+				<element id="INS05" usage="S" values="A,C,S,T"/>
+				<element id="INS06" usage="S" values="A,B,C,D,E"/>
+				<element id="INS07" usage="S" values="1,2,3,4,5,6,7,8"/>
+				<element id="INS08" usage="S" values="AO,AU,FT,L1,PT,RT,TE"/>
+				<element id="INS09" usage="S" values="F,N,P"/>
+				<element id="INS10" usage="S" values="Y,N"/>
+				<element id="INS11" usage="S" values="D8"/>
+				<element id="INS12" usage="S"/>
+				<element id="INS13" usage="N"/>
+				<element id="INS14" usage="N"/>
+				<element id="INS15" usage="N"/>
+				<element id="INS16" usage="N"/>
+				<element id="INS17" usage="S"/>
+			</segment>
+			<segment id="REF" name="Subscriber Number" usage="R" repeat="1">
+				<element id="REF01" usage="R" idvalues="0F"/>
+				<element id="REF02" usage="R"/>
+				<element id="REF03" usage="N"/>
+				<element id="REF04" usage="N"/>
+			</segment>
+			<segment id="REF" name="Member Policy Number" usage="S" repeat="1">
+				<element id="REF01" usage="R" idvalues="1L"/>
+				<element id="REF02" usage="R"/>
+				<element id="REF03" usage="N"/>
+				<element id="REF04" usage="N"/>
+			</segment>
+			<segment id="REF" name="Member identification Number" usage="S" repeat="5">
+				<element id="REF01" usage="R" idvalues="17,23,3H,DX,F6,Q4,ZZ"/>
+				<element id="REF02" usage="R"/>
+				<element id="REF03" usage="N"/>
+				<element id="REF04" usage="N"/>
+			</segment>
+			<segment id="REF" name="Prior Coverage Months" usage="S" repeat="1">
+				<element id="REF01" usage="R" idvalues="QQ"/>
+				<element id="REF02" usage="R"/>
+				<element id="REF03" usage="N"/>
+				<element id="REF04" usage="N"/>
+			</segment>
+			<segment id="DTP" name="Member Level Dates" usage="S" repeat="20">
+				<element id="DTP01" usage="R" idvalues="286,296,297,300,301,303,336,337,338,339,340,341,350,351,356,357,383,393,394,473,474"/>
+				<element id="DTP02" usage="R"/>
+				<element id="DTP03" usage="R"/>
+			</segment>
+			<loop id="L2100A" name="MEMBER NAME" repeat="1">
+				<segment id="NM1" name="Member Name" usage="R" repeat="1">
+					<element id="NM101" usage="R" values="74,IL"/>
+					<element id="NM102" usage="R" values="1"/>
+					<element id="NM103" usage="R"/>
+					<element id="NM104" usage="R"/>
+					<element id="NM105" usage="S"/>
+					<element id="NM106" usage="S"/>
+					<element id="NM107" usage="S"/>
+					<element id="NM108" usage="S" values="34,ZZ"/>
+					<element id="NM109" usage="S"/>
+					<element id="NM110" usage="N"/>
+					<element id="NM111" usage="N"/>
+				</segment>
+				<segment id="PER" name="Member Communications Numbers" usage="S" repeat="1">
+					<element id="PER01" usage="R" idvalues="IP"/>
+					<element id="PER02" usage="N"/>
+					<element id="PER03" usage="R" values="EM,EX,FX,HP,TE,WP"/>
+					<element id="PER04" usage="R"/>
+					<element id="PER05" usage="S" values="EM,EX,FX,HP,TE,WP"/>
+					<element id="PER06" usage="S"/>
+					<element id="PER07" usage="S" values="EM,EX,FX,HP,TE,WP"/>
+					<element id="PER08" usage="S"/>
+					<element id="PER09" usage="N"/>
+				</segment>
+				<segment id="N3" name="Member Residence Street Address" usage="S" repeat="1">
+					<element id="N301" usage="R"/>
+					<element id="N302" usage="S"/>
+				</segment>
+				<segment id="N4" name="Member Residence City, State, ZIP Code" usage="S" repeat="1">
+					<element id="N401" usage="R"/>
+					<element id="N402" usage="R"/>
+					<element id="N403" usage="R"/>
+					<element id="N404" usage="S"/>
+					<element id="N405" usage="S" values="60,CY"/>
+					<element id="N406" usage="S"/>
+				</segment>
+				<segment id="DMG" name="Member Demographics" usage="S" repeat="1">
+					<element id="DMG01" usage="R" values="D8"/>
+					<element id="DMG02" usage="R"/>
+					<element id="DMG03" usage="R" values="F,M,U"/>
+					<element id="DMG04" usage="S" values="B,D,I,M,R,S,U,W,X"/>
+					<element id="DMG05" usage="S" values="7,A,B,C,H,I,N,O"/>
+					<element id="DMG06" usage="S" values="1,2,3,4,5,6,7"/>
+					<element id="DMG07" usage="N"/>
+					<element id="DMG08" usage="N"/>
+					<element id="DMG09" usage="N"/>
+				</segment>
+				<segment id="ICM" name="Member Income" usage="S" repeat="1">
+					<element id="ICM01" usage="R" values="1,2,3,4,5,6,7,8,9,B,C,H,Q,S,U"/>
+					<element id="ICM02" usage="R"/>
+					<element id="ICM03" usage="S"/>
+					<element id="ICM04" usage="S"/>
+					<element id="ICM05" usage="S"/>
+					<element id="ICM06" usage="N"/>
+				</segment>
+				<segment id="AMT" name="Member Policy Amounts" usage="S" repeat="4">
+					<element id="AMT01" usage="R" values="B9,C1,D2,P3"/>
+					<element id="AMT02" usage="R"/>
+					<element id="AMT03" usage="N"/>
+				</segment>
+				<segment id="HLH" name="Member Health Information" usage="S" repeat="1">
+					<element id="HLH01" usage="S" values="N,S,T,U,X"/>
+					<element id="HLH02" usage="S"/>
+					<element id="HLH03" usage="S"/>
+					<element id="HLH04" usage="S"/>
+					<element id="HLH05" usage="S"/>
+					<element id="HLH06" usage="S"/>
+					<element id="HLH07" usage="S"/>
+				</segment>
+				<segment id="LUI" name="Member Language" usage="S" repeat="5">
+					<element id="LUI01" usage="S" values="LD,LE"/>
+					<element id="LUI02" usage="S"/>
+					<element id="LUI03" usage="S"/>
+					<element id="LUI04" usage="S" values="5,7,8"/>
+					<element id="LUI05" usage="N"/>
+				</segment>
+			</loop>
+			<loop id="L2100B" name="INCORRECT MEMBER NAME" repeat="1">
+				<segment id="NM1" name="Incorrect Member Name" usage="S" repeat="1">
+					<element id="NM101" usage="R" idvalues="70"/>
+					<element id="NM102" usage="R" values="1"/>
+					<element id="NM103" usage="R"/>
+					<element id="NM104" usage="R"/>
+					<element id="NM105" usage="S"/>
+					<element id="NM106" usage="S"/>
+					<element id="NM107" usage="S"/>
+					<element id="NM108" usage="S" values="34,ZZ"/>
+					<element id="NM109" usage="S"/>
+					<element id="NM110" usage="N"/>
+					<element id="NM111" usage="N"/>
+				</segment>
+				<segment id="DMG" name="Incorrect Member Demographics" usage="S" repeat="1">
+					<element id="DMG01" usage="R" values="D8"/>
+					<element id="DMG02" usage="R"/>
+					<element id="DMG03" usage="R" values="F,M,U"/>
+					<element id="DMG04" usage="N"/>
+					<element id="DMG05" usage="N"/>
+					<element id="DMG06" usage="S"/>
+					<element id="DMG07" usage="N"/>
+					<element id="DMG08" usage="N"/>
+					<element id="DMG09" usage="N"/>
+				</segment>
+			</loop>
+			<loop id="L2100C" name="MEMBER MAILING ADDRESS" repeat="1">
+				<segment id="NM1" name="Member Mailing Address" usage="S" repeat="1">
+					<element id="NM101" usage="R" idvalues="31"/>
+					<element id="NM102" usage="R" values="1"/>
+					<element id="NM103" usage="N"/>
+					<element id="NM104" usage="N"/>
+					<element id="NM105" usage="N"/>
+					<element id="NM106" usage="N"/>
+					<element id="NM107" usage="N"/>
+					<element id="NM108" usage="N"/>
+					<element id="NM109" usage="N"/>
+					<element id="NM110" usage="N"/>
+					<element id="NM111" usage="N"/>
+				</segment>
+				<segment id="N3" name="Member Mail Street Address" usage="S" repeat="1">
+					<element id="N301" usage="R"/>
+					<element id="N302" usage="S"/>
+				</segment>
+				<segment id="N4" name="Member Mail City, State, Zip" usage="S" repeat="1">
+					<element id="N401" usage="R"/>
+					<element id="N402" usage="R"/>
+					<element id="N403" usage="R"/>
+					<element id="N404" usage="S"/>
+					<element id="N405" usage="N"/>
+					<element id="N406" usage="N"/>
+				</segment>
+			</loop>
+			<loop id="L2100D" name="MEMBER EMPLOYER" repeat="3">
+				<segment id="NM1" name="Member Employer" usage="S" repeat="1">
+					<element id="NM101" usage="R" idvalues="ES"/>
+					<element id="NM102" usage="R" values="1,2"/>
+					<element id="NM103" usage="S"/>
+					<element id="NM104" usage="S"/>
+					<element id="NM105" usage="S"/>
+					<element id="NM106" usage="N"/>
+					<element id="NM107" usage="S"/>
+					<element id="NM108" usage="S" values="ZZ"/>
+					<element id="NM109" usage="S"/>
+					<element id="NM110" usage="N"/>
+					<element id="NM111" usage="N"/>
+				</segment>
+				<segment id="PER" name="Member Employer Communications Numbers" usage="S" repeat="1">
+					<element id="PER01" usage="R" idvalues="EP"/>
+					<element id="PER02" usage="N"/>
+					<element id="PER03" usage="R" values="EM,EX,FX,TE"/>
+					<element id="PER04" usage="R"/>
+					<element id="PER05" usage="S" values="EM,EX,FX,TE"/>
+					<element id="PER06" usage="S"/>
+					<element id="PER07" usage="S" values="EM,EX,FX,TE"/>
+					<element id="PER08" usage="S"/>
+					<element id="PER09" usage="N"/>
+				</segment>
+				<segment id="N3" name="Member Employer Street Address" usage="S" repeat="1">
+					<element id="N301" usage="R"/>
+					<element id="N302" usage="S"/>
+				</segment>
+				<segment id="N4" name="Member Employer City, State, Zip" usage="S" repeat="1">
+					<element id="N401" usage="R"/>
+					<element id="N402" usage="R"/>
+					<element id="N403" usage="R"/>
+					<element id="N404" usage="S"/>
+					<element id="N405" usage="N"/>
+					<element id="N406" usage="N"/>
+				</segment>
+			</loop>
+			<loop id="L2100E" name="MEMBER SCHOOL" repeat="3">
+				<segment id="NM1" name="Member School" usage="S" repeat="1">
+					<element id="NM101" usage="R" idvalues="M8"/>
+					<element id="NM102" usage="R" values="2"/>
+					<element id="NM103" usage="R" minlength="1" maxlength="70"/>
+					<element id="NM104" usage="N"/>
+					<element id="NM105" usage="N"/>
+					<element id="NM106" usage="N"/>
+					<element id="NM107" usage="N"/>
+					<element id="NM108" usage="N"/>
+					<element id="NM109" usage="N"/>
+					<element id="NM110" usage="N"/>
+					<element id="NM111" usage="N"/>
+				</segment>
+				<segment id="PER" name="Member School Commmunications Numbers" usage="S" repeat="1">
+					<element id="PER01" usage="R" idvalues="SK"/>
+					<element id="PER02" usage="N"/>
+					<element id="PER03" usage="R" values="EM,EX,FX,TE"/>
+					<element id="PER04" usage="R"/>
+					<element id="PER05" usage="S" values="EM,EX,FX,TE"/>
+					<element id="PER06" usage="S"/>
+					<element id="PER07" usage="S" values="EM,EX,FX,TE"/>
+					<element id="PER08" usage="S"/>
+					<element id="PER09" usage="N"/>
+				</segment>
+				<segment id="N3" name="Member School Street Address" usage="S" repeat="1">
+					<element id="N301" usage="R"/>
+					<element id="N302" usage="S"/>
+				</segment>
+				<segment id="N4" name="Member School City, State, Zip" usage="S" repeat="1">
+					<element id="N401" usage="R"/>
+					<element id="N402" usage="R"/>
+					<element id="N403" usage="R"/>
+					<element id="N404" usage="S"/>
+					<element id="N405" usage="N"/>
+					<element id="N406" usage="N"/>
+				</segment>
+			</loop>
+			<loop id="L2100F" name="CUSTODIAL PARENT" repeat="1">
+				<segment id="NM1" name="Custodial Parent" usage="S" repeat="1">
+					<element id="NM101" usage="R" idvalues="S3"/>
+					<element id="NM102" usage="R" values="1"/>
+					<element id="NM103" usage="R"/>
+					<element id="NM104" usage="R"/>
+					<element id="NM105" usage="S"/>
+					<element id="NM106" usage="S"/>
+					<element id="NM107" usage="S"/>
+					<element id="NM108" usage="S" values="34,ZZ"/>
+					<element id="NM109" usage="S"/>
+					<element id="NM110" usage="N"/>
+					<element id="NM111" usage="N"/>
+				</segment>
+				<segment id="PER" name="Custodial Parent Communications Numbers" usage="S" repeat="1">
+					<element id="PER01" usage="R" idvalues="PQ"/>
+					<element id="PER02" usage="N"/>
+					<element id="PER03" usage="R" values="EM,EX,FX,HP,TE,WP"/>
+					<element id="PER04" usage="R"/>
+					<element id="PER05" usage="S" values="EM,EX,FX,HP,TE,WP"/>
+					<element id="PER06" usage="S"/>
+					<element id="PER07" usage="S" values="EM,EX,HP,TE,WP"/>
+					<element id="PER08" usage="S"/>
+					<element id="PER09" usage="N"/>
+				</segment>
+				<segment id="N3" name="Custodial Parent Street Address" usage="S" repeat="1">
+					<element id="N301" usage="R"/>
+					<element id="N302" usage="S"/>
+				</segment>
+				<segment id="N4" name="Custodial Parent City, State, Zip" usage="S" repeat="1">
+					<element id="N401" usage="R"/>
+					<element id="N402" usage="R"/>
+					<element id="N403" usage="R"/>
+					<element id="N404" usage="S"/>
+					<element id="N405" usage="N"/>
+					<element id="N406" usage="N"/>
+				</segment>
+			</loop>
+			<loop id="L2100G" name="RESPONSIBLE PERSON" repeat="1">
+				<segment id="NM1" name="Responsible Person" usage="S" repeat="1">
+					<element id="NM101" usage="R" idvalues="E1,EI,EXS,GD,J6,QD"/>
+					<element id="NM102" usage="R" values="1"/>
+					<element id="NM103" usage="R"/>
+					<element id="NM104" usage="R"/>
+					<element id="NM105" usage="S"/>
+					<element id="NM106" usage="S"/>
+					<element id="NM107" usage="S"/>
+					<element id="NM108" usage="S" values="34,ZZ"/>
+					<element id="NM109" usage="S"/>
+					<element id="NM110" usage="N"/>
+					<element id="NM111" usage="N"/>
+				</segment>
+				<segment id="PER" name="Responsible Person Communications Numbers" usage="S" repeat="1">
+					<element id="PER01" usage="R" idvalues="RP"/>
+					<element id="PER02" usage="N"/>
+					<element id="PER03" usage="R" values="EM,EX,FX,HP,TE,WP"/>
+					<element id="PER04" usage="R"/>
+					<element id="PER05" usage="S" values="EM,EX,FX,HP,TE,WP"/>
+					<element id="PER06" usage="S"/>
+					<element id="PER07" usage="S" values="EM,EX,FX,HP,TE,WP"/>
+					<element id="PER08" usage="S"/>
+					<element id="PER09" usage="N"/>
+				</segment>
+				<segment id="N3" name="Responsible Person Street Address" usage="S" repeat="1">
+					<element id="N301" usage="R"/>
+					<element id="N302" usage="S"/>
+				</segment>
+				<segment id="N4" name="Responsible Person City, State, Zip" usage="S" repeat="1">
+					<element id="N401" usage="R"/>
+					<element id="N402" usage="R"/>
+					<element id="N403" usage="R"/>
+					<element id="N404" usage="S"/>
+					<element id="N405" usage="N"/>
+					<element id="N406" usage="N"/>
+				</segment>
+			</loop>
+			<loop id="L2200" name="DISABILITY INFORMATION" repeat="1">
+				<segment id="DSB" name="Disability Information" usage="S" repeat="1">
+					<element id="DSB01" usage="R" values="1,2,3,4"/>
+					<element id="DSB02" usage="N"/>
+					<element id="DSB03" usage="N"/>
+					<element id="DSB04" usage="N"/>
+					<element id="DSB05" usage="N"/>
+					<element id="DSB06" usage="N"/>
+					<element id="DSB07" usage="S" values="DX"/>
+					<element id="DSB08" usage="S" values="585"/>
+				</segment>
+				<segment id="DTP" name="Disability Eligibility Dates" usage="S" repeat="2">
+					<element id="DTP01" usage="R" idvalues="360,361"/>
+					<element id="DTP02" usage="R"/>
+					<element id="DTP03" usage="R"/>
+				</segment>
+			</loop>
+			<loop id="L2300" name="HEALTH COVERAGE" repeat="99">
+				<segment id="HD" name="Health Coverage" usage="S" repeat="1">
+					<element id="HD01" usage="R" values="001,002,021,024,025,026,030,032"/>
+					<element id="HD02" usage="N"/>
+					<element id="HD03" usage="R" values="AG,AH,AJ,AK,DCP,DEN,EPO,FAC,HE,HLT,HMO,LTC,LTD,MM,MOD,PDG,POS,PPO,PRA,STD,UR,VIS"/>
+					<element id="HD04" usage="S"/>
+					<element id="HD05" usage="S" values="CHD,DEP,E1D,E2D,E3D,E5D,E6D,E7D,E8D,E9D,ECH,EMP,ESP,FAM,IND,SPC,SPO,TWO"/>
+					<element id="HD06" usage="N"/>
+					<element id="HD07" usage="N"/>
+					<element id="HD08" usage="N"/>
+					<element id="HD09" usage="N"/>
+					<element id="HD10" usage="N"/>
+					<element id="HD11" usage="N"/>
+				</segment>
+				<segment id="DTP" name="Health Coverage Dates" usage="R" repeat="4">
+					<element id="DTP01" usage="R" idvalues="303,348,349,543"/>
+					<element id="DTP02" usage="R" values="D8"/>
+					<element id="DTP03" usage="R"/>
+				</segment>
+				<segment id="AMT" name="Health Coverage Policy" usage="S" repeat="4">
+					<element id="AMT01" usage="R" values="B9,C1,D2,P3"/>
+					<element id="AMT02" usage="R"/>
+					<element id="AMT03" usage="N"/>
+				</segment>
+				<segment id="REF" name="Health Coverage Policy Number" usage="S" repeat="2">
+					<element id="REF01" usage="R" idvalues="17,1L,ZZ"/>
+					<element id="REF02" usage="R"/>
+					<element id="REF03" usage="N"/>
+					<element id="REF04" usage="N"/>
+				</segment>
+				<segment id="IDC" name="Identification Card" usage="S" repeat="10">
+					<element id="IDC01" usage="R"/>
+					<element id="IDC02" usage="R" values="D,H"/>
+					<element id="IDC03" usage="S"/>
+					<element id="IDC04" usage="S" values="1,2,RX"/>
+				</segment>
+				<loop id="L2310" name="PROVIDER INFORMATION" repeat="30">
+					<segment id="LX" name="Provider Information" usage="S" repeat="1">
+						<element id="LX01" usage="R"/>
+					</segment>
+					<segment id="NM1" name="Provider Name" usage="R" repeat="1">
+						<element id="NM101" usage="R" values="3D,OD,P3,QA,QN,Y2"/>
+						<element id="NM102" usage="R" values="1,2"/>
+						<element id="NM103" usage="S"/>
+						<element id="NM104" usage="S"/>
+						<element id="NM105" usage="S"/>
+						<element id="NM106" usage="S"/>
+						<element id="NM107" usage="S"/>
+						<element id="NM108" usage="S" values="34,FI,ZZ"/>
+						<element id="NM109" usage="S"/>
+						<element id="NM110" usage="R" values="25,26,72"/>
+						<element id="NM111" usage="N"/>
+					</segment>
+					<segment id="N4" name="Provider City, State, ZIP Code" usage="S" repeat="1">
+						<element id="N401" usage="R"/>
+						<element id="N402" usage="R"/>
+						<element id="N403" usage="R"/>
+						<element id="N404" usage="S"/>
+						<element id="N405" usage="S" values="60,CY,RJ"/>
+						<element id="N406" usage="S"/>
+					</segment>
+					<segment id="PER" name="Provider Communications Numbers" usage="S" repeat="2">
+						<element id="PER01" usage="R" idvalues="RP"/>
+						<element id="PER02" usage="N"/>
+						<element id="PER03" usage="R" values="EM,EX,FX,HP,TE,WP"/>
+						<element id="PER04" usage="R"/>
+						<element id="PER05" usage="S" values="EM,EX,FX,HP,TE,WP"/>
+						<element id="PER06" usage="S"/>
+						<element id="PER07" usage="S" values="EM,EX,FX,HP,TE,WP"/>
+						<element id="PER08" usage="S"/>
+						<element id="PER09" usage="N"/>
+					</segment>
+					<segment id="PLA" name="PCP Change Reason" usage="S" repeat="1">
+						<element id="PLA01" usage="R" values="2"/>
+						<element id="PLA02" usage="R" values="1P"/>
+						<element id="PLA03" usage="R"/>
+						<element id="PLA04" usage="N"/>
+						<element id="PLA05" usage="R" values="14,22,46,AA,AB,AC,AD,AE,AF,AG,AH,AI,AJ"/>
+					</segment>
+				</loop>
+				<loop id="L2320" name="COORDINATION OF BENEFITS" repeat="5">
+					<segment id="COB" name="Coordination of Benefits" usage="S" repeat="1">
+						<element id="COB01" usage="R" values="P,S,T,U"/>
+						<element id="COB02" usage="S"/>
+						<element id="COB03" usage="R" values="1,5,6"/>
+					</segment>
+					<segment id="REF" name="Additional Coordination of Benefits identifiers" usage="S" repeat="5">
+						<element id="REF01" usage="R" idvalues="60,6P,A6,SY,ZZ"/>
+						<element id="REF02" usage="R"/>
+						<element id="REF03" usage="N"/>
+						<element id="REF04" usage="N"/>
+					</segment>
+					<segment id="N1" name="Other Insurance Company Name" usage="S" repeat="1">
+						<element id="N101" usage="R" idvalues="IN"/>
+						<element id="N102" usage="S"/>
+						<element id="N103" usage="S" values="FI,NI,XV"/>
+						<element id="N104" usage="S"/>
+						<element id="N105" usage="N"/>
+						<element id="N106" usage="N"/>
+					</segment>
+					<segment id="DTP" name="Coordination of Benefits Eligibility Dates" usage="S" repeat="2">
+						<element id="DTP01" usage="R" idvalues="344,345"/>
+						<element id="DTP02" usage="R" values="D8"/>
+						<element id="DTP03" usage="R"/>
+					</segment>
+				</loop>
+			</loop>
+			<loop id="L2400" name="LIFE COVERAGE" repeat="10">
+				<segment id="LC" name="Life Coverage" usage="S" repeat="1">
+					<element id="LC01" usage="R" values="001,002,021,024,025,026,030,032"/>
+					<element id="LC02" usage="S"/>
+					<element id="LC03" usage="R" values="LIFE,LTD,STD,ADD"/>
+					<element id="LC04" usage="S"/>
+					<element id="LC05" usage="S"/>
+					<element id="LC06" usage="S"/>
+					<element id="LC07" usage="S"/>
+					<element id="LC08" usage="S"/>
+					<element id="LC09" usage="S"/>
+				</segment>
+				<segment id="AMT" name="Monetary Amount" usage="S" repeat="5">
+					<element id="AMT01" usage="R" values="P3"/>
+					<element id="AMT02" usage="R"/>
+					<element id="AMT03" usage="N"/>
+				</segment>
+				<segment id="DTP" name="Date or Time Period" usage="S" repeat="3">
+					<element id="DTP01" usage="R" idvalues="348,401,300"/>
+					<element id="DTP02" usage="R" values="D8"/>
+					<element id="DTP03" usage="R"/>
+				</segment>
+				<segment id="REF" name="Reference Identification" usage="S" repeat="2"/>
+				<loop id="L2410" name="Beneficiary Information" repeat="40">
+					<segment id="BEN" name="Beneficiary or Owner Information" usage="S" repeat="1">
+						<element id="BEN01" usage="R" values="P,C"/>
+						<element id="BEN02" usage="R" values="1"/>
+						<element id="BEN03" usage="R"/>
+					</segment>
+					<segment id="NM1" name="" usage="S" repeat="1">
+						<element id="NM101" usage="R" values="1"/>
+						<element id="NM102" usage="R" values="1"/>
+						<element id="NM103" usage="R"/>
+						<element id="NM104" usage="R"/>
+						<element id="NM105" usage="S"/>
+						<element id="NM106" usage="S"/>
+						<element id="NM107" usage="S"/>
+						<element id="NM108" usage="S"/>
+						<element id="NM109" usage="S"/>
+						<element id="NM110" usage="S"/>
+						<element id="NM111" usage="S"/>
+					</segment>
+					<segment id="N1" name="" usage="S" repeat="1">
+						<element id="N101" usage="S"/>
+						<element id="N102" usage="S"/>
+						<element id="N103" usage="S"/>
+						<element id="N104" usage="S"/>
+						<element id="N105" usage="S"/>
+						<element id="N106" usage="S"/>
+					</segment>
+					<segment id="N2" name="" usage="S" repeat="1"/>
+					<segment id="N3" name="" usage="S" repeat="1">
+						<element id="N301" usage="R"/>
+						<element id="N302" usage="S"/>
+					</segment>
+					<segment id="N4" name="" usage="S" repeat="1">
+						<element id="N401" usage="S"/>
+						<element id="N402" usage="S"/>
+						<element id="N403" usage="S"/>
+						<element id="N404" usage="S"/>
+						<element id="N405" usage="S"/>
+						<element id="N406" usage="S"/>
+					</segment>
+					<segment id="DMG" name="" usage="S" repeat="1">
+						<element id="DMG01" usage="S"/>
+						<element id="DMG02" usage="S"/>
+						<element id="DMG03" usage="S"/>
+						<element id="DMG04" usage="S"/>
+						<element id="DMG05" usage="S"/>
+						<element id="DMG06" usage="S"/>
+						<element id="DMG07" usage="S"/>
+						<element id="DMG08" usage="S"/>
+						<element id="DMG09" usage="S"/>
+					</segment>
+				</loop>
+			</loop>
+			<loop id="L2500" name="FLEXIBLE SPENDING ACCOUNT" repeat="5">
+				<segment id="FSA" name="Flexible Spending Account" usage="S" repeat="1">
+					<element id="FSA01" usage="R" idvalues="1"/>
+					<element id="FSA02" usage="R"/>
+				</segment>
+				<segment id="AMT" name="FSA Monetary Amount" usage="S" repeat="10">
+					<element id="AMT01" usage="R" idvalues="P3,D2"/>
+					<element id="AMT02" usage="R"/>
+					<element id="AMT03" usage="N"/>
+				</segment>
+				<segment id="DTP" name="FSA Date or Time Period" usage="S" repeat="10">
+					<element id="DTP01" usage="R" idvalues="348"/>
+					<element id="DTP02" usage="R" values="D8"/>
+					<element id="DTP03" usage="R"/>
+				</segment>
+				<segment id="REF" name="FSA Reference Identification" usage="S" repeat="1">
+					<element id="REF01" usage="R"/>
+					<element id="REF02" usage="R"/>
+					<element id="REF03" usage="N"/>
+					<element id="REF04" usage="N"/>
+				</segment>
+			</loop>
+		</loop>
+		<segment id="SE" name="Transaction Set Trailer" usage="R" repeat="1">
+			<element id="SE01" usage="R"/>
+			<element id="SE02" usage="R"/>
+		</segment>
+	</table>
+</edifilespec>
